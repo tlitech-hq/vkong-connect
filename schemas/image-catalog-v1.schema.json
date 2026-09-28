@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vkong.tli-tech.com/schemas/image-catalog-v1.schema.json",
+  "title": "VKong Bridge Image Catalog v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "entries"],
+  "properties": {
+    "schema_version": {"const": "vkong.connect.image-catalog.v1"},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["studio_builds", "training_modes", "runtime", "image", "cli_contract"],
+        "properties": {
+          "studio_builds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "training_modes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "runtime": {"$ref": "runtime-identity-v1.schema.json"},
+          "image": {"type": "string", "pattern": "^\\S+@sha256:[0-9a-f]{64}$"},
+          "cli_contract": {"const": "vkong.cli.v1"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vkong.tli-tech.com/schemas/bridge-event-v1.schema.json",
+  "title": "VKong Bridge Event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["v", "job_id", "seq", "time", "type", "payload"],
+  "properties": {
+    "v": {"const": 1},
+    "job_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "seq": {"type": "integer", "minimum": 1},
+    "time": {"type": "string", "format": "date-time"},
+    "type": {
+      "enum": [
+        "phase",
+        "message",
+        "warning",
+        "metric",
+        "checkpoint",
+        "artifact",
+        "terminal"
+      ]
+    },
+    "payload": {"type": "object"}
+  }
+}
