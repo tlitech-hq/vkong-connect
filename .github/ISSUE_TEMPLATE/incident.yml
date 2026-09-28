@@ -1,0 +1,56 @@
+name: Incident
+description: A real rental, billing, or data-loss problem caused by vkong-connect
+labels: [incident]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start from what the user experienced, then go into technical detail.
+        Open it as soon as the incident is confirmed; contain first (stop the rental through VKong), write the postmortem later.
+        Add one of `sev1`/`sev2`/`sev3` and an `area/*` label. Each follow-up action becomes a sub-issue.
+        This repository is public: only include resource IDs that are safe to publish.
+  - type: textarea
+    id: user-flow
+    attributes:
+      label: What the user experienced
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Cost incurred, rental time, lost output, number of users, duration.
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: Status and mitigation
+      placeholder: Ongoing / contained by ... at ...
+    validations:
+      required: true
+  - type: textarea
+    id: ids
+    attributes:
+      label: Affected resources
+      description: Safe-to-publish IDs only, or where they are recorded privately.
+  - type: textarea
+    id: timeline
+    attributes:
+      label: Timeline (state the timezone)
+  - type: textarea
+    id: cause
+    attributes:
+      label: Technical cause
+      description: Separate what is confirmed from what is still unknown.
+  - type: textarea
+    id: exit
+    attributes:
+      label: Closing criteria
+      placeholder: |
+        - [ ] Root cause identified
+        - [ ] Fix + regression tests
+        - [ ] No leftover rentals or unexpected billing
+        - [ ] Postmortem in docs/incidents/
+    validations:
+      required: true

@@ -1,0 +1,52 @@
+name: Bug
+description: Something behaves differently from what the user expects
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start from the user flow, then go into technical detail.
+        Add one `area/*` label and one of `sev1`/`sev2`/`sev3`. See [docs/issue-workflow.md](https://github.com/tlitech-hq/vkong-connect/blob/main/docs/issue-workflow.md).
+        This repository is public: never paste tokens, signed URLs, or private account/workspace data.
+  - type: textarea
+    id: user-flow
+    attributes:
+      label: User flow
+      description: What the Studio user, integrator, or operator was trying to do and the steps they took, in plain language.
+      placeholder: |
+        User starts remote training from Studio with a local JSONL dataset:
+        1. ...
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected-actual
+    attributes:
+      label: Expected vs actual
+      description: What they expected to see, and what they saw instead.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: User impact
+      description: Cost, rental time, lost output, blocked work, confusing messages.
+  - type: textarea
+    id: context
+    attributes:
+      label: Versions
+      placeholder: |
+        vkong-connect commit:
+        unsloth-vkong commit:
+        vkong CLI version:
+        Runner image digest:
+  - type: textarea
+    id: technical
+    attributes:
+      label: Technical details
+      description: What the system did, relevant code paths and contracts. Mark what is confirmed and what is a guess.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs (redacted)
+      render: text

@@ -1,0 +1,39 @@
+name: Task
+description: Feature, improvement, or tech debt
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start from the user flow, then go into technical detail.
+        Add `enhancement`, `tech-debt`, `documentation` or `ops` and one `area/*` label.
+  - type: textarea
+    id: user-flow
+    attributes:
+      label: User flow
+      description: Who benefits and how their flow changes. For tech debt, describe the contributor or operator flow.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What is in and out of scope.
+  - type: textarea
+    id: technical
+    attributes:
+      label: Technical approach
+      description: Code paths, contracts, design notes, risks.
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      description: Required evidence (local tests, live CLI/GPU proof, docs).
+      placeholder: |
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: refs
+    attributes:
+      label: References
+      description: Related decisions, design docs, issues, or PRs.
