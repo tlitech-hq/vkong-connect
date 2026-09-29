@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Offline issue outbox (see docs/issue-workflow.md); never commit
+.local/
+.DS_Store

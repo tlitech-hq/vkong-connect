@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vkong.tli-tech.com/schemas/runtime-identity-v1.schema.json",
+  "title": "VKong Bridge Runtime Identity v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "adapter_name", "source_commit", "bridge_build_id", "adapter_schema", "job_schema", "event_version", "platform"],
+  "properties": {
+    "schema_version": {"const": "vkong.connect.runtime.v1"},
+    "adapter_name": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,63}$"},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "bridge_build_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "adapter_schema": {"type": "string", "minLength": 1, "maxLength": 128},
+    "job_schema": {"type": "string", "minLength": 1, "maxLength": 128},
+    "event_version": {"const": 1},
+    "platform": {"enum": ["linux/amd64", "linux/arm64"]}
+  }
+}

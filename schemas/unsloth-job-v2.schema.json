@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vkong.tli-tech.com/schemas/unsloth-job-v2.schema.json",
+  "title": "VKong Bridge Unsloth Job v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "job_id", "adapter", "runtime", "spec"],
+  "properties": {
+    "schema_version": {"const": "vkong.connect.job.v2"},
+    "job_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "schema_version"],
+      "properties": {
+        "name": {"const": "unsloth"},
+        "schema_version": {"const": "unsloth.v1"}
+      }
+    },
+    "runtime": {"$ref": "runtime-identity-v1.schema.json"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["worker_config", "output"],
+      "properties": {
+        "worker_config": {"type": "object"},
+        "output": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "repo_id", "private"],
+          "properties": {
+            "kind": {"const": "huggingface"},
+            "repo_id": {"type": "string"},
+            "private": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  }
+}
